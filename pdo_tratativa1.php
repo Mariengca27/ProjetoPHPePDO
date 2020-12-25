@@ -26,7 +26,21 @@ $query = 'create table tb_teste(
 ) ';  //Já que a conexão existe, a partir disso podemos criar uma tabela dentro do BD.
 
 $retorno = $conexao1 ->exec($query);
-echo $retorno;    //QUE SERÁ ZERO
+echo $retorno;    //QUE SERÁ ZERO. 
+
+
+//Query de testes para inserir dados na tabela criada:
+$query = 'INSERT INTO tb_teste( novoNome, novoEmal, novaSenha) VALUES ("Maria Macis", "maas@ol.com.br", "993934")';
+
+//Sempre lembrar que quando criar a query é necessário utilizar o método para executá-la. 
+$retorno = $conexao1->exec($query);  //Reaproveitando a variável
+echo $retorno;
+
+//OBS: Se ficar "atualizando" a página, cada atualização vai ser um registro colocado na tabela do banco de dados.  
+
+
+
+
 
 }
 
