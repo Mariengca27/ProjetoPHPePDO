@@ -36,10 +36,35 @@ $query = 'INSERT INTO tb_teste( novoNome, novoEmal, novaSenha) VALUES ("Maria Ma
 $retorno = $conexao1->exec($query);  //Reaproveitando a variável
 echo $retorno;
 
-//OBS: Se ficar "atualizando" a página, cada atualização vai ser um registro colocado na tabela do banco de dados.  
+//Podemos fazer uma Query de delete também, para apagar todos os registros do banco
+$novaQ= 'delete from tb_teste' ;
+$conexao1->exec($novaQ);       // Vai apagar tudo do BD. 
+
+echo $novaQ;                  //Imprimir a variável que contém a info de delete. 
 
 
+//OBS: Se ficar "atualizando" a página, cada atualização vai ser um registro colocado na tabela do banco de dados. Podem ser feitos vários registros ao mesmo tempo reaproveitando a variável query.
 
+
+//Utilização do PDOStatement Object/Query(agora não é mais a utilização do método exec) :
+
+$query = 'select * from tb_teste';
+
+
+$stmt = $conexao1-> query($query); //acesso aos dados
+print_r($stmt);
+
+//A partir desse objeto podemos executar MÉTODOS novos: 
+
+$lista = $stmt->fetchAll();
+echo'<pre>';
+print_r($lista);    // Arry 
+echo '</pre>';
+
+
+//Acesso a mais detalhes dos dados do BD:
+
+echo $lista[1]['novoEmal'];   //Vai printar a informação da posição de memória 2 com o email.
 
 
 }
